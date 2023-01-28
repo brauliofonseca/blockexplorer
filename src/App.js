@@ -1,6 +1,7 @@
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
 
+import Block from './components/Block';
 import './App.css';
 
 // Refer to the README doc for more information about using API
@@ -21,16 +22,49 @@ const alchemy = new Alchemy(settings);
 
 function App() {
   const [blockNumber, setBlockNumber] = useState();
+  const [block, setBlock] = useState()
 
   useEffect(() => {
-    async function getBlockNumber() {
+    async function getBlockData() {
       setBlockNumber(await alchemy.core.getBlockNumber());
+      const blockData = await alchemy.core.getBlockWithTransactions(blockNumber)
+      setBlock(blockData)
     }
-
-    getBlockNumber();
+    getBlockData();
   });
 
-  return <div className="App">Block Number: {blockNumber}</div>;
+
+  
+
+  // useEffect(() => {
+  //   alchemy.ws.on(
+  //     {
+  //       method: 'alchemy_minedTransactions'
+  //     },
+  //     res => {
+  //       console.log(res)           
+  //       setBlocks(res)
+  //     }
+            
+  //   )
+
+  //   return () => {
+  //     console.log("Removing listener")
+  //     alchemy.ws.removeAllListeners()
+  //   }
+  // }, [])
+
+  return (
+    <div className="App">
+      <Block 
+        blockData = {{
+          blockHash
+
+        }}
+      />
+
+    </div>
+  )
 }
 
 export default App;
