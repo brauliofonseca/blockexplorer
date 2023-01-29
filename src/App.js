@@ -22,7 +22,6 @@ const settings = {
 //   https://docs.alchemy.com/reference/alchemy-sdk-api-surface-overview#api-surface
 const alchemy = new Alchemy(settings);
 
-
 // Number of blocks retrieved from call
 const NUM_BLOCK = 10
 
@@ -46,12 +45,20 @@ function App() {
     getBlockData();
   }, []);
 
+  useEffect(() => {
+    console.log("Current block: " + selectedBlock)
+  }, [selectedBlock])
+
   return (
     <div className="App">
       <div className="App-header">Block Explorer</div>
+      <div className="App-menu">
+        <div className="App-menu-blocks">Blocks</div>
+        <div className="App-menu-accounts">Accounts</div>
+      </div>
       <div className="App-data">
         <BlockContainer blocks={blocks}/>
-        <TransactionInfo/>
+        <TransactionInfo />
       </div>
     </div>
   )

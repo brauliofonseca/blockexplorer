@@ -5,7 +5,7 @@ function Block({blockData}) {
     return (
         <div className="blockContainer">
             <div className="blockInfo">
-                <div>Block number: {blockData.number}</div>
+                <div className="blockNum">Block number: {blockData.number}</div>
                 <div>Timestamp: {blockData.timestamp}</div>
                 <div>Hash: {blockData.hash}</div>
                 <div>Parent Hash: {blockData.parentHash}</div>
