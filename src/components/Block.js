@@ -1,12 +1,22 @@
-import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
+import './stylesheets/Block.scss'
 
-
-export default Block = (props) => {
+function Block({blockData}) {
     return (
-        <div className="Block">
+        <div className="blockContainer">
+            <div>Block number: {blockData.number}</div>
+            <div>Timestamp: {blockData.timestamp}</div>
+            <div>Hash: {blockData.hash}</div>
+            <div>Parent Hash: {blockData.parentHash}</div>
+            <div>Number: {blockData.number}</div>
+            <div>Nonce: {blockData.nonce}</div>
+            <div>Miner: {blockData.miner}</div>
+            <div>Extra data: {blockData.extraData}</div>
+            <div>Gas used: {blockData.gasUsed._hex}</div>
+            <div>Transactions: {blockData.transactions.length}</div>
         </div>
-
     )
 }
+
+export default Block
 

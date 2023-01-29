@@ -1,8 +1,9 @@
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
 
-import Block from './components/Block';
+import BlockContainer from './components/BlockContainer';
 import './App.css';
+
 
 // Refer to the README doc for more information about using API
 // keys in client-side code. You should never do this in production
@@ -20,49 +21,35 @@ const settings = {
 //   https://docs.alchemy.com/reference/alchemy-sdk-api-surface-overview#api-surface
 const alchemy = new Alchemy(settings);
 
+
+// Number of blocks retrieved from call
+const NUM_BLOCK = 20
+
 function App() {
   const [blockNumber, setBlockNumber] = useState();
-  const [block, setBlock] = useState()
+  const [blocks, setBlocks] = useState([])
 
   useEffect(() => {
     async function getBlockData() {
+      // Set blockNumber from the latest block
       setBlockNumber(await alchemy.core.getBlockNumber());
-      const blockData = await alchemy.core.getBlockWithTransactions(blockNumber)
-      setBlock(blockData)
+      const blockNumberTemp = await alchemy.core.getBlockNumber()
+
+      // Get data for latest 20 blocks
+      const blockDataList = []
+      for (let i = 0; i < NUM_BLOCK; i+=1) {
+        const blockData = await alchemy.core.getBlockWithTransactions(blockNumberTemp - i)
+        blockDataList.push(blockData)
+      }
+      setBlocks(blockDataList)
     }
     getBlockData();
-  });
-
-
-  
-
-  // useEffect(() => {
-  //   alchemy.ws.on(
-  //     {
-  //       method: 'alchemy_minedTransactions'
-  //     },
-  //     res => {
-  //       console.log(res)           
-  //       setBlocks(res)
-  //     }
-            
-  //   )
-
-  //   return () => {
-  //     console.log("Removing listener")
-  //     alchemy.ws.removeAllListeners()
-  //   }
-  // }, [])
+  }, []);
 
   return (
     <div className="App">
-      <Block 
-        blockData = {{
-          blockHash
-
-        }}
-      />
-
+      <div className="App-header">Block Explorer</div>
+      <BlockContainer blocks={blocks}/>
     </div>
   )
 }
