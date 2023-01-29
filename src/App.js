@@ -57,8 +57,8 @@ function App() {
         <div className="App-menu-accounts">Accounts</div>
       </div>
       <div className="App-data">
-        <BlockContainer blocks={blocks}/>
-        <TransactionInfo />
+        <BlockContainer blocks={blocks} setSelectedBlock={setSelectedBlock}/>
+        <TransactionInfo block={selectedBlock}/>
       </div>
     </div>
   )

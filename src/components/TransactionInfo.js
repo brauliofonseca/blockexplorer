@@ -1,11 +1,17 @@
 import './stylesheets/TransactionContainer.scss'
 
-function TransactionInfo({transactions}) {
+function TransactionInfo({block}) {
     return (
         <div className="TransactionInfoContainer">
-            <div className="TransactionData">
-                Please select a block to see transaction data
-            </div>
+            { (block === undefined) ? 
+                <div className="TransactionData">
+                    Please select a block to see transaction data
+                </div> :
+                <div className="TransactionData">
+                    Gonna show some TX data now
+                    {block.number}
+                </div>
+            }
         </div>
     )
 }
