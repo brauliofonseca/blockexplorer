@@ -2,6 +2,7 @@ import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
 
 import BlockContainer from './components/BlockContainer';
+import TransactionInfo from './components/TransactionInfo';
 import './App.css';
 
 
@@ -23,16 +24,15 @@ const alchemy = new Alchemy(settings);
 
 
 // Number of blocks retrieved from call
-const NUM_BLOCK = 20
+const NUM_BLOCK = 10
 
 function App() {
-  const [blockNumber, setBlockNumber] = useState();
   const [blocks, setBlocks] = useState([])
+  const [selectedBlock, setSelectedBlock] = useState()
 
   useEffect(() => {
     async function getBlockData() {
-      // Set blockNumber from the latest block
-      setBlockNumber(await alchemy.core.getBlockNumber());
+      // Get latest block number
       const blockNumberTemp = await alchemy.core.getBlockNumber()
 
       // Get data for latest 20 blocks
@@ -49,7 +49,10 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">Block Explorer</div>
-      <BlockContainer blocks={blocks}/>
+      <div className="App-data">
+        <BlockContainer blocks={blocks}/>
+        <TransactionInfo/>
+      </div>
     </div>
   )
 }

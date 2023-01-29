@@ -24,6 +24,12 @@
   color: white;
 }
 
+.App-data {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+}
+
 .App-link {
   color: #61dafb;
 }
