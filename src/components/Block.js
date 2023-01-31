@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import './stylesheets/Block.scss'
 
 function Block({blockData, setSelectedBlock}) {
-    const timestamp = new Date(blockData.timestamp)
+    // const timestamp = new Date(blockData.timestamp)
 
     const handleClick = () => {
         setSelectedBlock(blockData)
