@@ -2,17 +2,39 @@
     width: 50%;
     align-items: center;
     padding-top: 30px;
+    overflow: hidden;
 }
 
 .TransactionData-empty {
     position: fixed;
 }
 
-.TransactionData {
+.SelectedBlock {
+    position: fixed;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    opacity: 1;
+    background-color: #f5f5f5;
+    max-width: 100%;
+    text-align: left;
+}
+
+.TransactionData-loaded {
     height: 550px;
     position: fixed; 
     border-radius: 20px;
     background: #f5f5f5;
     border: 2px solid #c3c6ce;
     overflow: auto;
+    padding-top: 10px;
+    margin: 40px;
 }
+
+.TransactionData {
+    padding-top: 10px;
+    margin: 40px;
+    overflow: auto;
+}
+

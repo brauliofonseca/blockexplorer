@@ -20,7 +20,7 @@ function Block({blockData, setSelectedBlock}) {
                 <div>Gas used: {blockData.gasUsed._hex}</div>
                 <div>Transactions: {blockData.transactions.length}</div>
             </div>
-            <button className="transaction-btn" onClick={handleClick} >See transactions</button>
+            <button className="transaction-btn" onClick={handleClick}>See transactions</button>
         </div>
     )
 }
