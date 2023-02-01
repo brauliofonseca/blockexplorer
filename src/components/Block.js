@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import './stylesheets/Block.scss'
 
 function Block({blockData, setSelectedBlock}) {
-    const timestamp = new Date(blockData.timestamp)
+    // const timestamp = new Date(blockData.timestamp)
 
     const handleClick = () => {
         setSelectedBlock(blockData)
@@ -20,7 +19,7 @@ function Block({blockData, setSelectedBlock}) {
                 <div>Gas used: {blockData.gasUsed._hex}</div>
                 <div>Transactions: {blockData.transactions.length}</div>
             </div>
-            <button className="transaction-btn" onClick={handleClick} >See transactions</button>
+            <button className="transaction-btn" onClick={handleClick}>See transactions</button>
         </div>
     )
 }

@@ -1,0 +1,23 @@
+.Transaction-card-close {
+    flex-direction: row;
+    border: 2px solid #c3c6ce;
+    display: flex;
+    padding: 15px;
+    width: 620px;
+}
+
+.Transaction-hash {
+    flex: 1;
+    width: 90%;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.expand-button {
+    width: 25px;
+    margin: 10px;
+}
+  
+.Transaction-card-open-tx-data {
+    text-align: left;
+}
